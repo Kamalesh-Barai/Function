@@ -1,0 +1,114 @@
+#################    sample()  ################
+
+sample(100, size = 10, replace = TRUE,
+       prob = rep(c(0.05, 0.07, 1.00, 10.00), times = 25))
+
+#################     seq()    ###############
+
+seq(10)
+seq(from = 1, to = 10)
+seq(1, 10, by = 2)
+seq(1, 10, length.out = 5)
+
+#################   cumsum()   ################
+# Returns a vector whose elements are the cumulative sums
+
+set.seed(10)
+x <- sample(20, size = 10)
+x
+cumsum(x)
+
+#################   lapply()   ################
+# Apply a function over a list or vector
+
+list1 <- list(a = 1:10, b = sample(100, size = 15, replace = TRUE),
+              c = c(seq(from = 1, to = 100, by = 7)))
+list1
+lapply(list1, length)
+lapply(list1, sum)
+lapply(list1, mean)
+lapply(list1, cumsum)
+
+#################   sapply()   ###############
+# The output of lapply() function is also a list. If i want to get the output in the
+# form of vector then i can use sapply() function.
+
+sapply(1:10, length)
+sapply(1:10, sum)
+sapply(1:10, seq)
+
+sapply(list1, length)
+sapply(list1, sum)
+sapply(list1, mean)
+sapply(list1, cumsum)
+
+# If list is wanted as the output
+sapply(list1, sum, simplify = FALSE)
+
+# If objects are not the same type
+list2 <- list(a = 1:10, b = sample(100, size = 15, replace = TRUE),
+              c = c("Sunday", "Monday", "Tuesday", "Wednesday"))
+list2
+lapply(list2, length)
+lapply(list2, sum)
+lapply(list2, mean)
+lapply(list2, cumsum)
+
+sapply(list2, length)
+sapply(list2, sum)
+sapply(list2, mean)
+sapply(list2, cumsum)
+
+#################     rep()    ###############
+
+rep(rep(c(0.05, 0.07, 1.00, 10.00), times = 25))
+rep(c(0.05, 0.07, 1.00, 10.00), times = 25, each = 2)
+
+################    mean()    ################
+
+mean(c(1:10, 50))
+mean(c(1:10, 50), trim = 2)
+c(1:10, 50)
+sum(c(3, 4, 5, 6, 7, 8, 9))
+42/7
+
+############   do.call()   ############
+
+my_list <- list(A = 1:5, B = letters[1:5])  # Create example list
+my_list
+
+cbind(my_list)
+do.call(cbind, my_list)
+as.data.frame(do.call(cbind, my_list))     # Convert list to data frame column
+as.data.frame(do.call(rbind, my_list))     # Convert list to data frame rows
+
+###########    missing()    ###########
+# I can determine if an argument was supplied or not with the missing() function.
+
+i <- function(a, b) {
+  c(missing(a), missing(b))
+}
+
+i()
+i(1,2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
