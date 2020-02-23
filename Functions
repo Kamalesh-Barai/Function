@@ -4,6 +4,7 @@ sample(100, size = 10, replace = TRUE,
        prob = rep(c(0.05, 0.07, 1.00, 10.00), times = 25))
 
 #################     seq()    ###############
+# Sequence generation
 
 seq(10)
 seq(from = 1, to = 10)
@@ -67,12 +68,14 @@ rep(c(0.05, 0.07, 1.00, 10.00), times = 25, each = 2)
 ################    mean()    ################
 
 mean(c(1:10, 50))
-mean(c(1:10, 50), trim = 2)
+mean(c(1:10, 50), trim = 2)   # Omit 2 number from both sides
 c(1:10, 50)
 sum(c(3, 4, 5, 6, 7, 8, 9))
 42/7
 
 ############   do.call()   ############
+# Execute a function call. It constructs and executes a function call from a name
+# or a function and a list of arguments to be passed to it
 
 my_list <- list(A = 1:5, B = letters[1:5])  # Create example list
 my_list
@@ -92,20 +95,51 @@ i <- function(a, b) {
 i()
 i(1,2)
 
+###########   stop()   ##############
+# Arguments olny evaluated if they're actually used
 
+x <- 9
+if (x < 10) stop("The value is less than ten.")
 
+###########    force()   ############
+# If a want to ensure that an argument is evaluated i can use force()
 
+f <- function(x) {
+  force(x)
+  10
+}
 
+f(stop("This is an error"))
 
+############   plot()   #############
+# Generic function for ploting of R objects.
 
+plot(1:5, cex = 2, pch = 20, col = "red")
 
+############   runif()   ############
+# The uniform distribution. It generates random deviates.
 
+runif(10)
+runif(10, min = 1, max = 100)
 
+############   cor()   #############
+# Correlation. A statistical technique that can show wheather and how strongly
+# pairs of variables are related.
 
+cor(1:10, 2:11)
 
+# Explanation of corelation
+x <- 1:10; y <- 2:11
+sumxy <- as.double(sum(x*y))
+sumx <- as.double(sum(x)); sumy <- as.double(sum(y))
+sumx_mul_sumy <- as.double(sumx * sumy)
+sumx2 <- sum(x ^ 2); sumy2 <- sum(y ^ 2)
+sumx_whole_sq <- sumx ^ 2; sumy_whole_sq <- sumy ^ 2
 
+{sumxy - (sumx_mul_sumy / 10)} / {sqrt({sumx2 - (sumx_whole_sq / 10)} *
+                                     {sumy2 - (sumy_whole_sq / 10)})}
 
-
+cor(x, y, use = "pairwise", method = "kendall")
 
 
 
